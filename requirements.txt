@@ -1,2 +1,6 @@
+# Frameworks
 Django==1.11
 wagtail==1.10.1
+
+# Connectors
+psycopg2==2.7.1
