@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/stuartalexwhitehead/api.stuart.is.svg?branch=master)](https://travis-ci.org/stuartalexwhitehead/api.stuart.is)
+
 # api.stuart.is
 Experimental back-end service for https://stuart.is
 

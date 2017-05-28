@@ -54,3 +54,8 @@ if [ "$1" == "start" ] ; then
     python manage.py migrate --settings=stuart_is.settings.dev
     python manage.py runserver 0.0.0.0:8000
 fi
+
+if [ "$1" == "test" ] ; then
+    coverage run --source='.' manage.py test --settings=stuart_is.settings.test
+    coverage report
+fi

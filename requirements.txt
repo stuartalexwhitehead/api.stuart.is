@@ -7,3 +7,4 @@ psycopg2==2.7.1
 
 # Testing
 flake8==3.3.0
+coverage==4.4.1
