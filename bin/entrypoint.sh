@@ -1,6 +1,35 @@
 #!/bin/bash
 
-# Wait until the PostgreSQL database is ready before starting the application
+# Check we have a task
+if [ -z "$1" ] ; then
+    echo "No command chosen"
+    echo "-------------------------------------------------"
+    echo "start                       start the application"
+    echo "test                        run tests"
+    echo "lint                        run flake8 linting"
+    echo "-------------------------------------------------"
+    exit 0
+fi
+
+# Run flake8 linting
+# --------------------------------
+# Lint whole working directory by default
+# Can accept space-separated list of filenames to lint
+if [ "$1" == "lint" ] ; then
+    shift
+
+    if [ -z "$1" ] ; then
+        LINT_TARGET=$(pwd)
+    else
+        LINT_TARGET="$@"
+    fi
+
+    flake8 ${LINT_TARGET}
+    exit 0
+fi
+
+# All other commands require PostgreSQL
+# Wait until the PostgreSQL database is ready before continuing
 let "attempts = 0";
 while ! python -c 'import psycopg2; psycopg2.connect("dbname=postgres user=postgres host=db")' &> /dev/null ;
 do
@@ -21,6 +50,7 @@ do
     sleep 1;
 done;
 
-# We can start
-python manage.py migrate
-python manage.py runserver 0.0.0.0:8000
+if [ "$1" == "start" ] ; then
+    python manage.py migrate --settings=stuart_is.settings.dev
+    python manage.py runserver 0.0.0.0:8000
+fi
