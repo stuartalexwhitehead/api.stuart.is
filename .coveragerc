@@ -4,8 +4,3 @@ omit =
     */migrations/*
     stuart_is/settings/*
     stuart_is/wsgi.py
-
-[paths]
-source =
-    ${TRAVIS_BUILD_DIR}
-    /usr/src/application

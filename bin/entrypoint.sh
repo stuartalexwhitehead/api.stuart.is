@@ -56,6 +56,6 @@ if [ "$1" == "start" ] ; then
 fi
 
 if [ "$1" == "test" ] ; then
-    coverage run manage.py test --settings=stuart_is.settings.test
+    coverage run --source='.' manage.py test --settings=stuart_is.settings.test
     coverage report
 fi
