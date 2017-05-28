@@ -16,6 +16,7 @@ The Docker entrypoint expects these commands. Any commands which rely on linked 
 | Command | Description |
 | --- | --- |
 | `start` | Start app |
+| `test` | Run Django unit tests, with coverage reporting |
 | `lint [file1] [file2] ...` | Run linting. By Default, all project files are linted. |
 
 ## PyCharm Configuration
