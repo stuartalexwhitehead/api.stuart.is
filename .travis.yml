@@ -16,5 +16,4 @@ script:
 
 after_success:
   - sed -i "s~/usr/src/application~$TRAVIS_BUILD_DIR~g" .coverage
-  - cat .coverage
   - coveralls
