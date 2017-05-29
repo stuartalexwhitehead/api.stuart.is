@@ -15,6 +15,6 @@ script:
   - docker-compose run app test
 
 after_success:
-  - sed -i "s~/usr/src/coverage~$TRAVIS_BUILD_DIR~g" .coverage
+  - sed -i "s~/usr/src/application~$TRAVIS_BUILD_DIR~g" .coverage
   - cat .coverage
   - coveralls
