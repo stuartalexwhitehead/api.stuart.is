@@ -1,10 +1,20 @@
 sudo: required
 
+language: python
+
 services:
   - docker
 
 before_install:
   - docker-compose build
 
+install:
+  - pip install coveralls
+
 script:
   - docker-compose run app test
+
+after_success:
+  - sed -i -e "s/\/usr\/src\/coverage/$TRAVIS_BUILD_DIR/g" .coverage
+  - cat .coverage
+  - coveralls
