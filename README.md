@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/stuartalexwhitehead/api.stuart.is.svg?branch=master)](https://travis-ci.org/stuartalexwhitehead/api.stuart.is)
+[![Coverage Status](https://coveralls.io/repos/github/stuartalexwhitehead/api.stuart.is/badge.svg)](https://coveralls.io/github/stuartalexwhitehead/api.stuart.is)
 
 # api.stuart.is
 Experimental back-end service for https://stuart.is
