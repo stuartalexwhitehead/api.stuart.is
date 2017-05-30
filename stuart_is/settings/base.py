@@ -8,6 +8,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 
 INSTALLED_APPS = [
+    'core',
     'home',
 
     'wagtail.wagtailforms',
@@ -21,6 +22,7 @@ INSTALLED_APPS = [
     'wagtail.wagtailsearch',
     'wagtail.wagtailadmin',
     'wagtail.wagtailcore',
+    'wagtail.api.v2',
 
     'modelcluster',
     'taggit',
@@ -102,4 +104,6 @@ MEDIA_URL = '/media/'
 
 WAGTAIL_SITE_NAME = "stuart_is"
 
-BASE_URL = 'http://localhost:8000'
+BASE_URL = 'http://localhost:8001'
+
+WAGTAILAPI_BASE_URL = 'http://localhost:8000'
