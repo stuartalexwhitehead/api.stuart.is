@@ -1,19 +1,17 @@
+dist: trusty
 sudo: required
 
 language: python
+python: "3.6"
 
 services:
-  - docker
+  - postgres
 
-before_install:
-  - docker-compose build
-
-install:
-  - pip install coveralls
+addons:
+  postgresql: "9.6"
 
 script:
-  - docker-compose run app test
+  - coverage run --source='.' manage.py test --settings=stuart_is.settings.test
 
 after_success:
-  - sed -i "s~/usr/src/application~$TRAVIS_BUILD_DIR~g" .coverage
   - coveralls
