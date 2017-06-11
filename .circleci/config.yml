@@ -25,8 +25,7 @@ jobs:
           command: |
             . venv/bin/activate
             coverage run --source='.' manage.py test --settings=stuart_is.settings.test
-      - run:
-          command: coveralls
+            coveralls
       - store_artifacts:
           path: test-reports/
           destination: tr1
