@@ -13,6 +13,7 @@ jobs:
       - restore_cache:
           key: test-{{ .Branch }}-{{ checksum "requirements/base.txt" }}-{{ checksum "requirements/dev.txt" }}
       - run:
+          name: Create virtualenv and install requirements
           command: |
             python3 -m venv test-venv
             . test-venv/bin/activate
@@ -22,6 +23,7 @@ jobs:
           paths:
             - "test-venv"
       - run:
+          name: Run tests and submit code coverage
           command: |
             . test-venv/bin/activate
             coverage run --source='.' manage.py test --settings=stuart_is.settings.test
