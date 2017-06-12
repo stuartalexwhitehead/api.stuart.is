@@ -4,3 +4,4 @@ omit =
     */migrations/*
     stuart_is/settings/*
     stuart_is/wsgi.py
+    *-venv/*

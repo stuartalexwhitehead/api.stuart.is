@@ -1,0 +1,6 @@
+-r base.txt
+
+# Testing
+flake8==3.3.0
+coverage==4.4.1
+coveralls==1.1
