@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/stuartalexwhitehead/api.stuart.is.svg?branch=master)](https://travis-ci.org/stuartalexwhitehead/api.stuart.is)
+[![Build Status](https://circleci.com/gh/stuartalexwhitehead/api.stuart.is.svg?style=shield&circle-token=fc1c2f84c4b1c8190a6043303a149c5e8abd297b)](https://travis-ci.org/stuartalexwhitehead/api.stuart.is)
 [![Coverage Status](https://coveralls.io/repos/github/stuartalexwhitehead/api.stuart.is/badge.svg)](https://coveralls.io/github/stuartalexwhitehead/api.stuart.is)
 
 # api.stuart.is
