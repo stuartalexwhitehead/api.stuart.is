@@ -14,16 +14,16 @@ jobs:
           key: test-{{ .Branch }}-{{ checksum "requirements/base.txt" }}-{{ checksum "requirements/dev.txt" }}
       - run:
           command: |
-            python3 -m venv test
-            . venv/bin/activate
+            python3 -m venv test-venv
+            . test-venv/bin/activate
             pip install -r requirements.txt
       - save_cache:
           key: test-{{ .Branch }}-{{ checksum "requirements/base.txt" }}-{{ checksum "requirements/dev.txt" }}
           paths:
-            - "test"
+            - "test-venv"
       - run:
           command: |
-            . venv/bin/activate
+            . test-venv/bin/activate
             coverage run --source='.' manage.py test --settings=stuart_is.settings.test
             coveralls
       - store_artifacts:
