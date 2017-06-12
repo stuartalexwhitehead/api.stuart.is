@@ -7,8 +7,8 @@ LABEL name="api.stuart.is"
 LABEL description="Development and testing container"
 
 WORKDIR /usr/src/application
-COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
+COPY requirements/ ./
+RUN pip install --no-cache-dir -r requirements/dev.txt
 COPY . .
 
 ENTRYPOINT ["bin/entrypoint.sh"]
