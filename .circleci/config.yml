@@ -31,3 +31,35 @@ jobs:
       - store_artifacts:
           path: test-reports/
           destination: tr1
+  deploy:
+    working_directory: ~/api.stuart.is
+    docker:
+      - image: circleci/python:3.6.1
+    steps:
+      - checkout
+      - restore_cache:
+          key: zappa-{{ .Branch }}-{{ checksum "requirements/base.txt" }}-{{ checksum "requirements/production.txt" }}
+      - run:
+          name: Create virtualenv and install requirements
+          command: |
+            python3 -m venv zappa-venv
+            . zappa-venv/bin/activate
+            pip install -r requirements/production.txt
+      - save_cache:
+          key: zappa-{{ .Branch }}-{{ checksum "requirements/base.txt" }}-{{ checksum "requirements/production.txt" }}
+          paths:
+            - "zappa-venv"
+      - run:
+          name: Test deployment
+          command: echo "Deploy"
+workflows:
+  version: 2
+  test_and_deploy:
+    jobs:
+      - build
+      - deploy
+        requires:
+          - build
+        filters:
+          branches:
+            only: feature/zappa
