@@ -56,8 +56,10 @@ jobs:
             . utils-venv/bin/activate
             pip install awscli
       - run:
-          name: Test deployment
-          command: echo "Deploy"
+          name: Prepare Zappa settings
+          command: |
+            . utils-venv/bin/activate
+            aws s3 cp s3://$ZAPPA_SETTINGS_BUCKET/zappa_settings.yml .
 workflows:
   version: 2
   test_and_deploy:
