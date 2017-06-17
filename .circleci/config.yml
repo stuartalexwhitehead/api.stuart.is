@@ -50,6 +50,12 @@ jobs:
           paths:
             - "zappa-venv"
       - run:
+          name: Install AWS CLI
+          command: |
+            python3 -m venv utils-venv
+            . utils-venv/bin/activate
+            pip install awscli
+      - run:
           name: Test deployment
           command: echo "Deploy"
 workflows:
