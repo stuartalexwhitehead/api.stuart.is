@@ -57,9 +57,9 @@ workflows:
   test_and_deploy:
     jobs:
       - build
-      - deploy
-        requires:
-          - build
-        filters:
-          branches:
-            only: feature/zappa
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: feature/zappa
