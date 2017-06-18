@@ -28,9 +28,6 @@ jobs:
             . test-venv/bin/activate
             coverage run --source='.' manage.py test --settings=stuart_is.settings.test
             coveralls
-      - store_artifacts:
-          path: test-reports/
-          destination: tr1
   deploy:
     working_directory: ~/api.stuart.is
     docker:
@@ -49,12 +46,18 @@ jobs:
           key: zappa-{{ .Branch }}-{{ checksum "requirements/base.txt" }}-{{ checksum "requirements/production.txt" }}
           paths:
             - "zappa-venv"
+      - restore_cache:
+          key: utils-{{ .Branch }}-{{ checksum "requirements/utils.txt" }}
       - run:
           name: Install AWS CLI
           command: |
             python3 -m venv utils-venv
             . utils-venv/bin/activate
             pip install awscli
+      - save_cache:
+          key: utils-{{ .Branch }}-{{ checksum "requirements/utils.txt" }}
+          paths:
+            - "utils-venv"
       - run:
           name: Prepare Zappa settings
           command: |
