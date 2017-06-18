@@ -67,9 +67,9 @@ jobs:
           name: Deploy Zappa
           command: |
             . zappa-venv/bin/activate
-            zappa deploy production
+            zappa update production
             zappa manage production migrate
-            zappa manage production collectstatic --noinput
+            zappa manage production "collectstatic --noinput"
 workflows:
   version: 2
   test_and_deploy:
