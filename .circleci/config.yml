@@ -68,6 +68,7 @@ jobs:
           command: |
             . zappa-venv/bin/activate
             zappa update production
+            zappa manage production showmigrations
             zappa manage production migrate
             zappa manage production "collectstatic --noinput"
 workflows:
