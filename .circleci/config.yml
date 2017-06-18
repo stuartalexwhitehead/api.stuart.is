@@ -63,6 +63,13 @@ jobs:
           command: |
             . utils-venv/bin/activate
             aws s3 cp s3://$ZAPPA_SETTINGS_BUCKET/zappa_settings.yml .
+      - run:
+          name: Deploy Zappa
+          command: |
+            . zappa-venv/bin/activate
+            zappa deploy production
+            zappa manage production migrate
+            zappa manage production collectstatic --noinput
 workflows:
   version: 2
   test_and_deploy:
