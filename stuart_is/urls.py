@@ -10,9 +10,6 @@ from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from core.views import api_router
 
 urlpatterns = [
-    url(r'^django-admin/', include(admin.site.urls)),
-
-    url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
 
     url(r'', api_router.urls),
@@ -22,6 +19,12 @@ urlpatterns = [
     # the list:
     url(r'', include(wagtail_urls)),
 ]
+
+if settings.ALLOW_ADMIN:
+    urlpatterns = [
+        url(r'^django-admin/', include(admin.site.urls)),
+        url(r'^admin/', include(wagtailadmin_urls)),
+    ] + urlpatterns
 
 
 if settings.DEBUG:

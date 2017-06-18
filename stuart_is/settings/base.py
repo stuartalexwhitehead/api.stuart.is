@@ -107,3 +107,5 @@ WAGTAIL_SITE_NAME = "stuart_is"
 BASE_URL = 'http://localhost:8001'
 
 WAGTAILAPI_BASE_URL = 'http://localhost:8000'
+
+ALLOW_ADMIN = False

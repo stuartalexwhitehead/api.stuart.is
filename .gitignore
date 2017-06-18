@@ -3,3 +3,6 @@
 **/*/__pycache__
 .DS_Store
 .coverage
+
+# Not needed
+stuart_is/settings/local.py
