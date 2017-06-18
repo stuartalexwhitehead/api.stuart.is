@@ -38,6 +38,10 @@ BASE_URL = 'https://api.stuart.is'
 
 WAGTAILAPI_BASE_URL = 'https://stuart.is'
 
+ALLOWED_HOSTS = [
+    os.environ.get('API_GATEWAY_ENDPOINT')
+]
+
 try:
     from .local import *  # noqa: F401, F403
 except ImportError:
