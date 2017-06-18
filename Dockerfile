@@ -7,7 +7,7 @@ LABEL name="api.stuart.is"
 LABEL description="Development and testing container"
 
 WORKDIR /usr/src/application
-COPY requirements/ ./
+COPY requirements/ ./requirements
 RUN pip install --no-cache-dir -r requirements/dev.txt
 COPY . .
 
